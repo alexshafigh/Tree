@@ -64,8 +64,10 @@ public class Main {
 //        tree.searchforparent(6,tree.getRoot());
 //         System.out.println( tree.pparent==null?"No Parent":tree.pparent.data );
 
-        ///lhgasdlasgdflkjahsdlfkjhasldfhaslkdfhlashf
-        //lkjasdhflaksjdhflkajsdhflkashdflkasdhflashdf
+        //
+        //
+        //
+
         System.out.println("Before Delete Node ");
         tree.preOrderTraversal(tree.getRoot());
         tree.BinaryTreeDelete(16, tree.getRoot());
