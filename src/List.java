@@ -6,6 +6,7 @@ public class List<T extends Comparable<T>> {
     Node<T> last;
 
     Node recursivesearchvalue = null;
+//    hi
 
     public List() {
         first = null;
