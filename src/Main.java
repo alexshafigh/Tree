@@ -68,11 +68,11 @@ public class Main {
         //
         //
 
-        System.out.println("Before Delete Node ");
-        tree.preOrderTraversal(tree.getRoot());
-        tree.BinaryTreeDelete(16, tree.getRoot());
-        System.out.printf("\nAfter Delete Node\n ");
-        tree.preOrderTraversal(tree.getRoot());
+//        System.out.println("Before Delete Node ");
+//        tree.preOrderTraversal(tree.getRoot());
+//        tree.BinaryTreeDelete(16, tree.getRoot());
+//        System.out.printf("\nAfter Delete Node\n ");
+//        tree.preOrderTraversal(tree.getRoot());
 
     }
 
