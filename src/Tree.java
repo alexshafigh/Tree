@@ -2,9 +2,9 @@
  * Created by saazimi on 6/24/2018.
  */
 public class Tree<T extends Comparable<T>> {
-    private TreeNode<T> root;
-    TreeNode returny = null;
     protected TreeNode pparent = null;
+    TreeNode returny = null;
+    private TreeNode<T> root;
 
 
     public Tree() {
@@ -89,31 +89,98 @@ public class Tree<T extends Comparable<T>> {
         return returny;
     }
 
-//    public void BinaryTreeDelete(T item , TreeNode treeroot ){
-//        if (treeroot.getLeftNode() == null && treeroot.getRightNode() == null)
-//        {//this node is leaf
-//
-//        }
-//        if (treeroot.getLeftNode() != null){
-//
-//        }
-//        else if (treeroot.getRightNode() != null){
-//
-//        }
-//        else
-//    }
+    public void BinaryTreeDelete(T item, TreeNode treeroot) {
+        TreeNode node = searchfornode(item, treeroot);
+        if (node.getLeftNode() == null && node.getRightNode() == null) {
+            //Leaf
+            searchforparent(item, treeroot);
+            if (pparent.leftNode == node)
+                pparent.leftNode = null;
+            else pparent.rightNode = null;
+        } else if ((node.getLeftNode() == null && node.getRightNode() != null) || (node.getLeftNode() != null && node.getRightNode() == null)) {
+            searchforparent(item, treeroot);
+            if (pparent.getLeftNode() == node)
+                pparent.setLeftNode(node.getLeftNode() == null ? node.getRightNode() : node.getLeftNode());
+            else pparent.setRightNode(node.getLeftNode() == null ? node.getRightNode() : node.getLeftNode());
+//            if (node.getLeftNode() == null)
+//                node = node.getRightNode();
+//            else node = node.getLeftNode();
+        } else {
+            TreeNode z = LittlesBiggerThan(item);
+            TreeNode w = BiggestLittlerThan(item);
+            if (z.data.compareTo(w.data) < 0) {
+                TreeNode candid = z;
+                searchforparent((T) candid.data, this.getRoot());
+                pparent.setRightNode(null);
+                searchforparent(item, this.getRoot());
+                if (pparent != null) {
+                    if (pparent.getRightNode() == node) {
+                        pparent.setRightNode(candid);
+                    } else pparent.setLeftNode(candid);
+                    candid.setLeftNode(node.getLeftNode());
+                } else {
+                    candid.setLeftNode(node.getLeftNode());
+                    candid.setRightNode(node.getRightNode());
+                }
+            } else {
+                TreeNode candid = z;
+                searchforparent((T) candid.data, this.getRoot());
+                TreeNode parentLiitestBigger = pparent;
+
+                if (parentLiitestBigger.leftNode == candid) parentLiitestBigger.leftNode = null;
+                else parentLiitestBigger.rightNode = null;
+                searchforparent(item, this.getRoot());
+                TreeNode itemparent = pparent;
+
+                if (itemparent != null) {
+                    if (itemparent.getRightNode() == node) {
+                        itemparent.setRightNode(candid);
+                    } else itemparent.setLeftNode(candid);
+
+                    candid.setRightNode(node.getRightNode());
+                    candid.setLeftNode(node.getLeftNode());
+                    node.setRightNode(null);
+                    node.setLeftNode(null);
+                } else {
+                    candid.setLeftNode(node.getLeftNode());
+                    candid.setRightNode(node.getRightNode());
+                    node.setRightNode(null);
+                    node.setLeftNode(null);
+
+                }
+            }
+
+        }
+
+    }
+
+    private TreeNode LittlesBiggerThan(T item) {
+        TreeNode pointer = searchfornode(item, this.getRoot());
+        pointer = pointer.rightNode;
+        while (pointer.getLeftNode() != null) pointer = pointer.getLeftNode();
+        return pointer;
+    }
+
+    private TreeNode BiggestLittlerThan(T item) {
+        TreeNode pointer = searchfornode(item, this.getRoot());
+        pointer = pointer.leftNode;
+        while (pointer.getRightNode() != null) pointer = pointer.rightNode;
+        return pointer;
+    }
 
 
-    public void searchforparent(T item , TreeNode treenode){
-        if (treenode.getLeftNode() != null){
+    public void searchforparent(T item, TreeNode treenode) {
+        if (searchfornode(item, treenode) == treenode) pparent = null;
+        else {
+            if (treenode.getLeftNode() != null) {
             if (treenode.getLeftNode().data == item) pparent = treenode;
-            else searchforparent(item,treenode.getLeftNode());
+            else searchforparent(item, treenode.getLeftNode());
         }
-         if (treenode.getRightNode() != null){
+            if (treenode.getRightNode() != null) {
             if (treenode.getRightNode().data == item) pparent = treenode;
-            else searchforparent(item,treenode.getRightNode());
+            else searchforparent(item, treenode.getRightNode());
         }
-        return;
+        }
     }
 
     public TreeNode getPparent(){
