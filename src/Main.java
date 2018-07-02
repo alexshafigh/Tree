@@ -67,7 +67,7 @@ public class Main {
         tree.preOrderTraversal(tree.getRoot());
         tree.BinaryTreeDelete(16, tree.getRoot());
         System.out.printf("\nAfter Delete Node\n ");
-        tree.preOrderTraversal(tree.getRoot());
+//        tree.preOrderTraversal(tree.getRoot());
 
     }
 
