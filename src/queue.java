@@ -9,7 +9,7 @@ public class queue<T>  {
         tail = null;
     }
 
-    public queue(Node node){
+    public queue(Node node) {
         head = node;
         tail = head;
     }

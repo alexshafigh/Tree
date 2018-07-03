@@ -50,7 +50,6 @@ public class Main {
 //        tree.insertNode(20);
 //        tree.insertNode(17);
 //        tree.insertNode(4);
-//        tree.insertNode(6);
 
 
 

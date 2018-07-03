@@ -1,7 +1,7 @@
 /**
  * Created by saazimi on 6/17/2018.
  */
-public class Node<T> {
+public class Node<T>  {
     private T data;
     private Node next;
 

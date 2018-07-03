@@ -69,6 +69,7 @@ public class List<T extends Comparable<T>>  {
             Node z = last;
             last = node;
             return z;
+
         }
     }
 

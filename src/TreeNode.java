@@ -42,7 +42,7 @@ public class TreeNode<T extends Comparable<T>> implements Comparable {
             if ( rightNode == null)
                 rightNode = new TreeNode<>(value);
             else rightNode.insert(value);
-        } //node.compareto(data)==0
+        }
     }
 
     public boolean isEmpty() {
