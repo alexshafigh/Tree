@@ -1,7 +1,7 @@
 /**
  * Created by saazimi on 6/17/2018.
  */
-public class Node<T extends Comparable<T>> {
+public class Node<T> {
     private T data;
     private Node next;
 
@@ -12,6 +12,10 @@ public class Node<T extends Comparable<T>> {
 
     public Node(T data) {
         this.data = data;
+    }
+
+    public Node(TreeNode treeroot) {
+        data = (T) treeroot;
     }
 
     public T getData() {
@@ -29,4 +33,5 @@ public class Node<T extends Comparable<T>> {
     public void setNext(Node next) {
         this.next = next;
     }
+
 }

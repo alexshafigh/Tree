@@ -1,9 +1,10 @@
 /**
  * Created by saazimi on 6/27/2018.
  */
-public class List<T extends Comparable<T>> {
+public class List<T extends Comparable<T>>  {
     Node<T> first;
     Node<T> last;
+    private int size;
 
     Node recursivesearchvalue = null;
 
@@ -36,6 +37,7 @@ public class List<T extends Comparable<T>> {
             first = node ;
         }
     }
+
     public void insertlast(T item){
         if (isEmpty()) {
             insertfirst(item);
@@ -67,6 +69,22 @@ public class List<T extends Comparable<T>> {
             Node z = last;
             last = node;
             return z;
+        }
+    }
+
+
+    public Node<TreeNode> getFirst() {
+        if (isEmpty()) return null;
+        else if (first.getNext() == null) {
+            Node pointer = first;
+            first = null;
+            return  pointer;
+        }
+        else {
+            Node pointer = first;
+            first = first.getNext();
+            pointer.setNext(null);
+            return pointer;
         }
     }
 
@@ -107,5 +125,16 @@ public class List<T extends Comparable<T>> {
 
     }
 
+    public int getLength(){
+        int lengh = 1;
+        if (isEmpty()) return 0;
+        else {
+            while (first.getNext()!= null){
+                first = first.getNext();
+                lengh++;
+            }
+        }
+        return lengh;
+    }
 
 }

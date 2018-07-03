@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * Created by saazimi on 6/24/2018.
  */
@@ -5,7 +7,8 @@ public class Tree<T extends Comparable<T>> {
     protected TreeNode pparent = null;
     TreeNode returny = null;
     private TreeNode<T> root;
-
+    List list = new List();
+    static int index = 0;
 
     public Tree() {
         root = null;
@@ -68,7 +71,6 @@ public class Tree<T extends Comparable<T>> {
 
     public int maximum(int a , int b){
         return a>=b?a:b;
-
     }
 
 //    public void NodeDelete(T item,Node tree){
@@ -146,12 +148,9 @@ public class Tree<T extends Comparable<T>> {
                     candid.setRightNode(node.getRightNode());
                     node.setRightNode(null);
                     node.setLeftNode(null);
-
                 }
             }
-
         }
-
     }
 
     private TreeNode LittlesBiggerThan(T item) {
@@ -185,6 +184,34 @@ public class Tree<T extends Comparable<T>> {
 
     public TreeNode getPparent(){
         return pparent;
+    }
+
+
+    public void LevelOrderTraversal(TreeNode treeroot){
+//        list = new LinkedList();
+        list.insertfirst(treeroot);
+//        index++;
+        lvl();
+    }
+
+    public void lvl(){
+
+        TreeNode item = (TreeNode) list.getFirst().getData();
+        System.out.println(item.data);
+
+//        TreeNode item =(TreeNode) queue.remove();
+//        System.out.println(item.data);
+        if (item.leftNode != null && item.rightNode != null)
+        {
+            list.insertlast( item.leftNode);
+//            index++;
+            list.insertlast( item.rightNode);
+            lvl();
+        }
+        else  if (item.leftNode != null){ list.insertlast(item.leftNode); lvl();}
+        else if (item.rightNode != null) { list.insertlast(item.rightNode);lvl();}
+        else if (item.leftNode == null && item.rightNode == null && list.getLength() == 0) return;
+        else lvl();
     }
 
 }

@@ -1,7 +1,7 @@
 /**
  * Created by saazimi on 6/24/2018.
  */
-public class TreeNode<T extends Comparable<T>> {
+public class TreeNode<T extends Comparable<T>> implements Comparable {
     T data;
     TreeNode<T> leftNode;
     TreeNode<T> rightNode;
@@ -49,4 +49,14 @@ public class TreeNode<T extends Comparable<T>> {
         return data == null;
     }
 
+    @Override
+    public int compareTo(Object o) {
+         int value  = 10;
+        if (this.data instanceof  Integer){
+            if (this.data == ((TreeNode)o).data) value =  0;
+            else if ((Integer)this.data <(Integer) ((TreeNode)o).data) value =  -1;
+            else if ((Integer)this.data <(Integer) ((TreeNode)o).data) value =  1;
+        }
+        return value;
+    }
 }

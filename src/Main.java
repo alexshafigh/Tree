@@ -42,12 +42,12 @@ public class Main {
 //        list.recursivePrintlistbackward(list.first);
 
         Tree<Integer> tree = new Tree<Integer>(14);
-        tree.insertNode(8);
-        tree.insertNode(22);
-        tree.insertNode(16);
-        tree.insertNode(40);
-        tree.insertNode(15);
-        tree.insertNode(20);
+//        tree.insertNode(8);
+//        tree.insertNode(22);
+//        tree.insertNode(16);
+//        tree.insertNode(40);
+//        tree.insertNode(15);
+//        tree.insertNode(20);
 //        tree.insertNode(17);
 //        tree.insertNode(4);
 //        tree.insertNode(6);
@@ -65,12 +65,15 @@ public class Main {
 //         System.out.println( tree.pparent==null?"No Parent":tree.pparent.data );
 
 
+//
+//        System.out.println("Before Delete Node ");
+//        tree.preOrderTraversal(tree.getRoot());
+//        tree.BinaryTreeDelete(16, tree.getRoot());
+//        System.out.printf("\nAfter Delete Node\n ");
+//        tree.preOrderTraversal(tree.getRoot());
+        tree.LevelOrderTraversal(tree.getRoot());
 
-        System.out.println("Before Delete Node ");
-        tree.preOrderTraversal(tree.getRoot());
-        tree.BinaryTreeDelete(16, tree.getRoot());
-        System.out.printf("\nAfter Delete Node\n ");
-        tree.preOrderTraversal(tree.getRoot());
+
 
     }
 
